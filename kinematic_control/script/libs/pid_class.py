@@ -18,8 +18,8 @@ class PID:
         self.Derivator = 0.0
         self.Integrator = 0.0
 
-    	self.alpha = 0.7
-    	self.control = 0.0
+        self.alpha = 0.7
+        self.control = 0.0
 
         self.set_point = 0.0
         self.error = 0.0
@@ -55,10 +55,10 @@ class PID:
             PID = -10000
             self.Integrator = self.Integrator - ((self.errorant + self.error)/2)*self.Ts
 
-        # Filter	
+        # Filter    
         self.control = (1-self.alpha)*self.control + self.alpha*PID
         # self.control = PID
-		
+        
 
         return self.control
 
