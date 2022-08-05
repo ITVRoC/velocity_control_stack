@@ -1,0 +1,66 @@
+# control parameters
+ robust_control:
+
+  # Frequency in Hz for publish Torque
+  control_frequency: 40.0
+
+  # Topic to read velocities - must be Odometry
+  topic_name: "/odom"
+
+  # Backstepping Controller Parameters
+  controller:
+    K: [[8.0,0.0],[0.0,13.0]]
+    K2: [[8.0,0.0],[0.0,13.0]]
+    Ts: 0.005
+    etol: 0.02
+
+  # PID Controller Parameters
+  pid_controller:
+    kp: 20 #60   
+    ki: 30 #70   
+    kd: 0.0  
+    ts: 0.02
+    etol: 0.002
+    ori_kp: 10 #20.0
+    ori_ki: 20 #50.0
+    ori_kd: 0.0 #0.0
+    ori_ts: 0.02
+    ori_etol: 0.005
+
+
+# robot parameters
+ robot_parameters:
+
+  # 1- UFMG, 2 - ITV
+  motor_config: 1
+
+  motors:
+    motor_rpm_saturation: 12000
+    # Planetary gear reduction - Same for all wheels 
+    planetary_gear_reduction: 111.0
+    # Internal wheel reduction - Synchronous belt (44/21) for central wheels 
+    central_wheel_reduction: 2.095238095
+    # External wheel reduction - Synchronous belt (50/26) for extremity wheels (middle wheels)
+    extremity_wheel_reduction: 1.9230769236
+
+  # Dynamics parameters
+  dynamics:
+    mass: 20.34577        
+    gravity: 9.81         
+    drag: 0.5
+    wheel_radio: 0.15      
+    motor_efficiency: 0.70  
+    friction_coef: 0.7
+    inertial_coef: 0.03898
+    Ca: 500
+    Cy: 500
+    lf: 0.36     
+    lr: 0.36     
+    ls: 0.34     
+    Adr: 0.02
+    inertia_z: 0.569047241  
+    torque_max: 5 # 2*Tmax - 4 rodas ou 3*Tmax - 6 rodas (Tmax = 6)
+    vel_max: 0.7         # computed for 12000 rpm
+    ang_vel_max: 1.8235     # computed for 12000 rpm
+    # Number of Wheels (4 or 6)
+    number_wheels: 4

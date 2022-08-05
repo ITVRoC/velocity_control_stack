@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+		
+	<!-- PID Control -->
+	<node name="espeleo_robust_control" pkg="dynamic_control" type="pid_control.py" output="screen"/>
+		<!-- <param name="vehicle_number" value="$(arg number)"/> -->
+		<rosparam command="load" file="$(find dynamic_control)/config/config.yaml" />
+
+	<!-- ODOM -->
+	<rosparam file="$(find kinematic_control)/config/locomotion_parameters.yaml" command="load" ns=""/>	
+	<node name="espelo_odom" pkg="kinematic_control" type="odom.py" respawn="true"/>
+
+	<!-- Save Results -->
+	<!--node name="save_data" pkg="dynamic_control" type="save_data.py" output="screen"/-->
+
+</launch>

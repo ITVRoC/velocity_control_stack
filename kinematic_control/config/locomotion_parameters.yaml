@@ -1,0 +1,46 @@
+ # espeleo locomotion parameters
+ espeleo_locomotion: 
+
+  #Control Op Mode
+  # velocity
+  # current
+  operation_mode: "velocity"
+
+  #Config motors
+  # 1 - UFMG
+  # 2 - ITV
+  motor_config: 2
+
+  # Robot Movimment Orientation Forward (True) or backward (False)
+  forward_orientation: True
+
+  # control update rate [Hz]
+  control_rate: 50.0
+
+  # wheels radius [m]
+  wheeled_radius: 0.151 #0.1442   
+
+  # motors parameters 
+  motor_rpm_saturation: 12000
+
+  # Planetary gear reduction - Same for all wheels 
+  planetary_gear_reduction: 111.0
+
+  # Internal wheel reduction - Synchronous belt (44/21) for central wheels 
+  central_wheel_reduction: 2.095238095
+
+  # External wheel reduction - Synchronous belt (50/26) for extremity wheels (middle wheels)
+  extremity_wheel_reduction: 1.9230769236
+
+  ## Displacement of the front and back wheels from the robot geometric center [m]
+  a: 0.2125
+
+  # Lateral displacement of the middle wheels from the robot geometric center [m] (6 wheels)
+  L: 0.225
+
+  ## Lateral displacement of the front and back wheels from the robot geometric center [m]
+  b: 0.171
+
+  # Number of Wheels (4 or 6)
+  number_wheels: 4
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+		
+	<!-- VELOCITY_CONTROL -->
+	<node name="backstepping_control" pkg="dynamic_control" type="differential_control.py" output="screen" args="" />
+	<rosparam command="load" file="$(find dynamic_control)/config/config.yaml" />
+
+        <!-- ODOM -->
+    <rosparam file="$(find kinematic_control)/config/locomotion_parameters.yaml" command="load" ns=""/>	
+	<node name="espelo_odom" pkg="kinematic_control" type="odom.py" respawn="true"/>
+
+	<!-- Pub Path -->
+	<!--node name="vizual_path" pkg="dynamic_control" type="pub_path.py"/-->
+
+
+	<!-- Save Results -->
+	<!--node name="save_data" pkg="dynamic_control" type="save_data.py" output="screen"/-->
+
+</launch>

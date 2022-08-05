@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- ESPELEO_LOCOMOTION -->
+	<rosparam file="$(find kinematic_control)/config/locomotion_parameters.yaml" command="load" ns=""/>	
+	<node name="espeleo_locomotion_node" pkg="kinematic_control" type="espeleo_locomotion_Skid.py" respawn="true" />
+
+	<!-- RPM control by current -->
+	<node name="espeleo_current_control" pkg="kinematic_control" type="RPM_Current_control.py" output="screen" respawn="true"/>
+
+
+	<!-- ODOM -->
+	<node name="espelo_odom" pkg="kinematic_control" type="odom.py" respawn="true"/>
+
+</launch>
+ 
