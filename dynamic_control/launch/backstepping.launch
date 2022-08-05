@@ -8,13 +8,6 @@
 
         <!-- ODOM -->
     <rosparam file="$(find kinematic_control)/config/locomotion_parameters.yaml" command="load" ns=""/>	
-	<node name="espelo_odom" pkg="kinematic_control" type="odom.py" respawn="true"/>
-
-	<!-- Pub Path -->
-	<!--node name="vizual_path" pkg="dynamic_control" type="pub_path.py"/-->
-
-
-	<!-- Save Results -->
-	<!--node name="save_data" pkg="dynamic_control" type="save_data.py" output="screen"/-->
+	<node name="odometry" pkg="kinematic_control" type="odom.py" respawn="true"/>
 
 </launch>

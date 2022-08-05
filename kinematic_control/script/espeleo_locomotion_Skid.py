@@ -16,45 +16,43 @@ from sensor_msgs.msg import JointState
 from geometry_msgs.msg import Twist, Wrench
 from std_msgs.msg import Int16
 
-from libs.bib_espeleo_skid import Espeleo_skid 
+from libs.bib_robot_skid import Robot_skid 
 
 
 
 def dyn_config_callback(cfg):
-    forward_orientation = rospy.get_param('/espeleo_locomotion/forward_orientation') 
+    forward_orientation = rospy.get_param('/robot_locomotion/forward_orientation') 
 
     if "forward_orientation" in cfg.keys():
         forward_orientation = cfg["forward_orientation"]
         print(cfg)
 
 
-class Espeleo_locomotion():
+class Robot_locomotion():
 
     # constructor class
     def __init__(self):
         
         # initilializing node
-        rospy.init_node('espeleo_locomotion', anonymous=True, log_level=rospy.DEBUG)
+        rospy.init_node('robot_locomotion', anonymous=True, log_level=rospy.DEBUG)
 
          # trying to get robot parameters from ROS parameter server
         try:
-            self.locomotionParamDictionary = rospy.get_param('/espeleo_locomotion/')     
+            self.locomotionParamDictionary = rospy.get_param('/robot_locomotion/')     
         except:
             
             # sends a fatal message to the user
-            rospy.logfatal("Espeleo default parameters not found on ROS param server. Check if ./espeleo_locomotion/config/locomotion_parameters.yaml file exists, and if it is being correctly loaded into a launch file. Shutting down the node")
+            rospy.logfatal("Default parameters not found on ROS param server. Check if ./kinematic_control/config/locomotion_parameters.yaml file exists, and if it is being correctly loaded into a launch file. Shutting down the node")
 
             # shuts down the node
             rospy.signal_shutdown('Shutting down the node.')
             return None
 
         # sending a message
-        rospy.loginfo('Espeleo_Locomotion 3.0 node initiated.')
+        rospy.loginfo('Robot_Locomotion 3.0 node initiated.')
 
         # Creating Subscribers
         rospy.Subscriber("cmd_vel", Twist, self.callback_command)
-        # rospy.Subscriber("/operation_mode", Int16, self.callback_mode)
-        # rospy.Subscriber("/cmd_torque", Wrench, self.callback_torque)
 
         # Creating Publishers
         self.motor_publisher1 = rospy.Publisher('/device1/set_joint_state', JointState, queue_size=10)
@@ -74,7 +72,7 @@ class Espeleo_locomotion():
 
 
         # Create Lib Object
-        self.espeleo_obj = Espeleo_skid(self.locomotionParamDictionary)
+        self.robot_obj = Robot_skid(self.locomotionParamDictionary)
 
         # Variables
         self.wheels_velocity = [0, 0, 0, 0, 0, 0]
@@ -91,7 +89,7 @@ class Espeleo_locomotion():
 
         self.last_time = rospy.Time.now()
 
-        self.wheels_velocity = self.espeleo_obj.compute_kinematicMotion(cmd_vel_x, w)
+        self.wheels_velocity = self.robot_obj.compute_kinematicMotion(cmd_vel_x, w)
 
 
 
@@ -101,7 +99,6 @@ class Espeleo_locomotion():
         motor_config = self.locomotionParamDictionary['motor_config']
 
         while not rospy.is_shutdown():
-            # mode_type = rospy.get_param('/kacanopen_espeleo/operation_mode')
             
             #################################################################
             ################ Velocity  Mode #################################
@@ -213,6 +210,6 @@ class Espeleo_locomotion():
 #================= starts the node ========================
 if __name__ == '__main__':
     client = dynamic_reconfigure.client.Client("espeleo", timeout=5, config_callback=dyn_config_callback)
-    espeleo = Espeleo_locomotion()
-    espeleo.run()
+    robot = Robot_locomotion()
+    robot.run()
 

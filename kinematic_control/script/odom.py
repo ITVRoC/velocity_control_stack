@@ -18,7 +18,7 @@ from geometry_msgs.msg import Point, Pose, Quaternion, Twist, Vector3
 from sensor_msgs.msg import JointState
 
 
-from libs.bib_espeleo_skid import Espeleo_skid 
+from libs.bib_robot_skid import Robot_skid 
 
 class odometry:
     def __init__(self):
@@ -38,10 +38,10 @@ class odometry:
         self.motor_velocity6 = 0
 
 	# Robot mode
-        self.wheels_mode = rospy.get_param('espeleo_locomotion/number_wheels')
+        self.wheels_mode = rospy.get_param('robot_locomotion/number_wheels')
 
         # Wheel radius for TF (base_init > chassis_init)
-        self.wheel_radius = rospy.get_param('espeleo_locomotion/wheeled_radius')
+        self.wheel_radius = rospy.get_param('robot_locomotion/wheeled_radius')
 
         self.time_counter_aux = 0
         self.ros_init()
@@ -51,7 +51,7 @@ class odometry:
         rospy.init_node('wheel_odometry_publisher', anonymous=True)
         rospy.loginfo("Computing Wheel Odometry")
 
-        motor_config = rospy.get_param('espeleo_locomotion/motor_config')
+        motor_config = rospy.get_param('robot_locomotion/motor_config')
 
         # Times used to integrate velocity to pose
         self.current_time = 0.0
@@ -112,9 +112,9 @@ class odometry:
             self.last_time = self.current_time
 
     def odometry_calculation(self):
-        espeleo = Espeleo_skid(rospy.get_param('/espeleo_locomotion/'))
+        robot = Robot_skid(rospy.get_param('/robot_locomotion/'))
         ### Skid-Steering model
-        v_robot, w_robot = espeleo.get_kinematic_velocity([self.motor_velocity1,  self.motor_velocity2,  self.motor_velocity3,  self.motor_velocity4,  self.motor_velocity5,  self.motor_velocity6])
+        v_robot, w_robot = robot.get_kinematic_velocity([self.motor_velocity1,  self.motor_velocity2,  self.motor_velocity3,  self.motor_velocity4,  self.motor_velocity5,  self.motor_velocity6])
 
         if self.time_counter_aux == 0:
             self.last_time = self.current_time

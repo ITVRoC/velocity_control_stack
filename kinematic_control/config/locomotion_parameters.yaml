@@ -1,5 +1,5 @@
- # espeleo locomotion parameters
- espeleo_locomotion: 
+ #locomotion parameters
+ robot_locomotion: 
 
   #Control Op Mode
   # velocity

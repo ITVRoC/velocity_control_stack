@@ -136,7 +136,7 @@ def run():
 
 	
 
-	freq = rospy.get_param('espeleo_locomotion/control_rate')
+	freq = rospy.get_param('robot_locomotion/control_rate')
 	int_erro = 0.0
 	dt = 1.0/freq
 	
@@ -160,8 +160,7 @@ def run():
 
 	rate = rospy.Rate(freq)
 	while not rospy.is_shutdown():
-		# mode_type = rospy.get_param('/kacanopen_espeleo/operation_mode')
-		mode_type = rospy.get_param('/espeleo_locomotion/operation_mode')
+		mode_type = rospy.get_param('/robot_locomotion/operation_mode')
 
 		if mode_type == "current":
 		

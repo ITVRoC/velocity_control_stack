@@ -13,7 +13,7 @@ import numpy as np
 import math
   
 # Class definition
-class Espeleo_skid:
+class Robot_skid:
     
     # class constructor
     def __init__(self, locomotionParamDictionary):
@@ -83,7 +83,7 @@ class Espeleo_skid:
         if self.locomotionParamDictionary['number_wheels'] == 4:
             velocity_left = [wheels[0], wheels[2]]
             velocity_right = [wheels[3], wheels[5]]
-            # Calculate right and left velocitys, considering that when the Espeleo move fowards, the motor on the left has a positive velocity, and the motors on the right has negative.
+            # Calculate right and left velocitys, considering that when the move fowards, the motor on the left has a positive velocity, and the motors on the right has negative.
             velocity_left = sum(velocity_left) / len(velocity_left)
             velocity_right = (sum(velocity_right) / len(velocity_right)) * -1
 
@@ -110,8 +110,8 @@ class Espeleo_skid:
 
             vel = vel*r
 
-            v_espeleo = vel[0][0]
-            w_espeleo = vel[1][0]
+            v = vel[0][0]
+            w = vel[1][0]
             
         elif self.locomotionParamDictionary['number_wheels'] == 6:
             vd = (velocity_right[0] + velocity_right[2]) / 2.0 * -1.0
@@ -133,11 +133,11 @@ class Espeleo_skid:
 
             # print("V := ", V_vec)
 
-            v_espeleo = (2.0/3.0)*vel[0][0] + (1.0/3.0)*V_vec[0][0]
-            w_espeleo = (2.0/3.0)*vel[1][0] + (1.0/3.0)*V_vec[1][0]
+            v = (2.0/3.0)*vel[0][0] + (1.0/3.0)*V_vec[0][0]
+            w = (2.0/3.0)*vel[1][0] + (1.0/3.0)*V_vec[1][0]
             
 
-        return v_espeleo, w_espeleo
+        return v, w
 
 
     def compute_kinematicMotion(self, v, w):
@@ -208,7 +208,7 @@ class Espeleo_skid:
 
         else:
             # sends a fatal message to the user
-            rospy.logfatal("Espeleo configuration accepts only 4 or 6 wheels. Change the number_wheels parameter in ./espeleo_locomotion/config/locomotion_parameters.yaml")
+            rospy.logfatal("Robot configuration accepts only 4 or 6 wheels. Change the number_wheels parameter in ./kinematic_control/config/locomotion_parameters.yaml")
 
             # shuts down the node
             rospy.signal_shutdown('Shutting down the node.')
