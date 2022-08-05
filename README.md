@@ -62,3 +62,6 @@ roslaunch dynamic_control pid.launch
 ```
 roslaunch kinematic_control espeleo_locomotion.launch
 ```
+
+## Contact
+Bug report: victor_mrfm@yahoo.com.br
