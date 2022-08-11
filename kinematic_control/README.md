@@ -1,3 +1,8 @@
 # kinematic_control
 
-![alt text](https://github.com/[ITVRoC]/[velocity_control_stack]/blob/[main]/robot_defs.png?raw=true)
+<p align='center'>
+	<img src="kinematic_control/images/robot_defs.png" alt="center" width="1000"/>
+</p>
+<p align='center'>
+	Figure: Mapping results in the Engineering School (UFMG) auditorium hall using: (a) LeGO-LOAM, and (b) EKF-LOAM.
+</p>
