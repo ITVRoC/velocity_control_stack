@@ -4,8 +4,8 @@
 
 
 <p align='center'>
-	<img src="/kinematic_control/images/robot_defs_3d.png" alt="center" width="800"/>
+	<img src="/kinematic_control/images/robot_defs_3d.png" alt="center" width="500"/>
 </p>
 <p align='center'>
-	Figure: Mapping results in the Engineering School (UFMG) auditorium hall using: (a) LeGO-LOAM, and (b) EKF-LOAM.
+	Figure: Four-wheeled robot ilustration.
 </p>
