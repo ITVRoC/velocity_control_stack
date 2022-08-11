@@ -16,3 +16,6 @@ This package works in robots with differential or skid-steering geometry. In the
 
 
 Considering a skid-steering geometry with four wheels shown in the Figure above, we can obtain the kinematic model by analyzing the robot geometry and assuming some nonholonomic constraints.
+
+
+## ROS - Topics in use
