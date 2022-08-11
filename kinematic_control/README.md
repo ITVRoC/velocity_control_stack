@@ -19,3 +19,5 @@ Considering a skid-steering geometry with four wheels shown in the Figure above,
 
 
 ## ROS - Topics in use
+
+The package subscribes a ROS message of type **Geometry_msgs/Twist** and publish in a ROS message **Sensor_msgs/JointState** for each wheel of the robot.
