@@ -20,9 +20,16 @@ Considering a skid-steering geometry with four wheels shown in the Figure above,
 
 ## ROS - Topics in use
 
-The package subscribes a ROS message of type [Geometry_msgs/Twist](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html) and publish in a ROS message [Sensor_msgs/JointState](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/JointState.html) for each wheel of the robot.
+The package subscribes to a ROS message of type [Geometry_msgs/Twist](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html) and publishes to a ROS message [Sensor_msgs/JointState](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/JointState.html) for each wheel of the robot. Besides that, the package also publishes to an [Nav_msgs/Odometry](http://docs.ros.org/en/noetic/api/nav_msgs/html/msg/Odometry.html) that includes data of the robot's position, velocity, and orientation obtained from the encoders on wheels, subscribing from a [Sensor_msgs/JointState](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/JointState.html).
 
 ### Subscrribe Topics:
 ```
-\cmd_vel - Geometry_msgs/Twist
+/cmd_vel --- Geometry_msgs/Twist
+/deviceX/get_joint_state --- Sensor_msgs/JointState , Where X is the wheel number (1,2,3,...,6)
+```
+
+### Publish Topics:
+```
+/deviceX/set_joint_state --- Sensor_msgs/JointState , Where X is the wheel number (1,2,3,...,6)
+/odom --- Nav_msgs/Odometry
 ```
