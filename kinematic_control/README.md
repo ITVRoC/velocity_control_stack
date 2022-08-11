@@ -8,5 +8,5 @@
 	<img src="/kinematic_control/images/robot_defs.png" alt="center" width="300"/>
 </p>
 <p align='center'>
-	Figure: Four-wheeled robot geometry ilustration.
+	Figure: Four-wheeled robot geometry illustration.
 </p>
