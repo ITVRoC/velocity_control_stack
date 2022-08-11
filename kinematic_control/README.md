@@ -21,3 +21,8 @@ Considering a skid-steering geometry with four wheels shown in the Figure above,
 ## ROS - Topics in use
 
 The package subscribes a ROS message of type [Geometry_msgs/Twist](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/Twist.html) and publish in a ROS message [Sensor_msgs/JointState](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/JointState.html) for each wheel of the robot.
+
+### Subscrribe Topics:
+```
+\cmd_vel - Geometry_msgs/Twist
+```
