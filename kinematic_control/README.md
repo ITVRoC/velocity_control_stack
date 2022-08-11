@@ -21,7 +21,11 @@ Considering a skid-steering geometry with four wheels shown in the Figure above,
 	<img src="/kinematic_control/images/eq_1.png" alt="center" width="250"/>
 </p>
 
+Now, considering that the angular velocity performed by each wheel on the right side is the same, as well as on the left side, we can conclude that the robot linear motion results from the sum of the linear speed performed by each wheel. For the angular motion, considering the anti-symmetry principle, to obtain equilibrium the angular velocity on the right side is the same of the left side, but rotating in the opposite direction. Besides that, the condition for stabilization regards the linear velocity performed by each wheel and a parametric constant based on the robot geometry. Thus, combining linear and angular motion, the kinematic model results in the following equation:
 
+<p align='center'>
+	<img src="/kinematic_control/images/eq_2.png" alt="center" width="250"/>
+</p>
 
 ## ROS - Topics in use
 
