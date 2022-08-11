@@ -15,12 +15,12 @@ These packages must be used in cascade with a navigation control to follow a ref
 ### dynamic_control
 This package contains a nonlinear controller based on the integral backstepping technique. The controller is designed to track desired linear and angular velocities for a weeled robot considering a nonlinear dynamic model. The strategy use lateral and longitudinal dynamics coupled in a MIMO design of the backstepping with an adaptive part for observable parameters, aiming to mitigate nonlinear effects and other external disturbances due to the roughness of the terrain, for example. 
 
-Details for running, dependences and ROS messages on the package [here](dynamic_control)
+Details on the package [here](dynamic_control)
 
 ### kinematic_control
 This package uses a well-defined kinematic model that represents a wheeled robot with differential or skid-steering geometry, according to the geometric parameters selected. This control strategy doesn't use a feedback signal to compare and track desired velocities but could be considered for applications with minor external disturbances or nonlinearities. The control system uses the inverse kinematic model to define wheel commands given desired linear and angular velocities.
 
-Details for running, dependences and ROS messages on the package [here](kinematic_control)
+Details on the package [here](kinematic_control)
 
 ## Main Dependences
 - [ROS](http://wiki.ros.org/ROS/Installation) (tested with kinetic and melodic)
